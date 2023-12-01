@@ -19,8 +19,8 @@ class TodoResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'description' => $this->description,
-            'completed' => $this->completed,
+           // 'description' => $this->description,
+            'status' => $this->completed,
             // Add other fields as needed
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString(),

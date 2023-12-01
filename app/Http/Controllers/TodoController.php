@@ -2,11 +2,11 @@
 
 
 namespace App\Http\Controllers;
-
+use App\Http\Resources\TodoResource;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
-use App\Http\Resources\TodoResource;
+
 use Illuminate\Support\Facades\Validator;
 
 class TodoController extends Controller
@@ -14,7 +14,7 @@ class TodoController extends Controller
     // Method to get all todos    
      public function index()
     {
-        $todos = TodosResource::collection(Todo::all());
+        $todos = TodoResource::collection(Todo::all());
         return response()->json(['todos' => $todos]);
     }
 
