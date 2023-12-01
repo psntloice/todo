@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Validator;
 class TodoController extends Controller
 {
     // Method to get all todos    
-    public function index()
+   /*TO BE REMOVED  public function index()
     {
         $todos = Todo::all();
         return response()->json(['todos' => $todos]);
     }
-
+*/
     // Method to get a specific todo by ID    
     public function show($id)
     {
@@ -32,7 +32,7 @@ class TodoController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'description' => 'nullable',
+            'description' => 'nullable', //TO CHANGE HERE
             'completed' => 'required|boolean',
         ]);
 
