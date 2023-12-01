@@ -50,6 +50,7 @@ class TodoController extends Controller
     public function update(Request $request, $id)
     {
         //$todo = Todo::find($id);
+        //$users = User::where('name', 'John')->get();
         $todo = Todo::where('id', $id)->first();
         if (!$todo) {
             return response()->json(['message' => 'Todo not found'], 404);
