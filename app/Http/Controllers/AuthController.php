@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
 // app/Http/Controllers/AuthController.php
 
 use Illuminate\Support\Facades\Auth;
