@@ -2,25 +2,27 @@
 
 
 namespace App\Http\Controllers;
-
+use App\Http\Resources\TodoResource;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Validator;
 
 class TodoController extends Controller
 {
     // Method to get all todos    
-    public function index()
+     public function index()
     {
-        $todos = Todo::all();
+        $todos = TodoResource::collection(Todo::all());
         return response()->json(['todos' => $todos]);
     }
 
     // Method to get a specific todo by ID    
     public function show($id)
     {
-        $todo = Todo::find($id);
+       // $todo = Todo::find($id);
+       $todo = Todo::where('id', $id)->first();
         if (!$todo) {
             return response()->json(['message' => 'Todo not found'], 404);
         }
@@ -32,7 +34,7 @@ class TodoController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'description' => 'nullable',
+            'description' => 'nullable', //TO CHANGE HERE
             'completed' => 'required|boolean',
         ]);
 
@@ -47,7 +49,9 @@ class TodoController extends Controller
     // Method to update a todo by ID    
     public function update(Request $request, $id)
     {
-        $todo = Todo::find($id);
+        //$todo = Todo::find($id);
+        //$users = User::where('name', 'John')->get();
+        $todo = Todo::where('id', $id)->first();
         if (!$todo) {
             return response()->json(['message' => 'Todo not found'], 404);
         }
@@ -69,7 +73,8 @@ class TodoController extends Controller
     // Method to delete a todo by ID   
     public function destroy($id)
     {
-        $todo = Todo::find($id);
+        //$todo = Todo::find($id);
+        $todo = Todo::where('id', $id)->first();
         if (!$todo) {
             return response()->json(['message' => 'Todo not found'], 404);
         }
