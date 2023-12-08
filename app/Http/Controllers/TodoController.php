@@ -14,6 +14,7 @@ class TodoController extends Controller
     // Method to get all todos    
      public function index()
     {
+        return auth()->user();
         $todos = TodoResource::collection(Todo::all());
         return response()->json(['todos' => $todos]);
     }
@@ -32,9 +33,10 @@ class TodoController extends Controller
     // Method to create a new todo    
     public function store(Request $request)
     {
+        //return $request;
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'description' => 'nullable', //TO CHANGE HERE
+            //'description' => 'nullable', //TO CHANGE HERE
             'completed' => 'required|boolean',
         ]);
 
