@@ -14,7 +14,7 @@ class TodoController extends Controller
     // Method to get all todos    
      public function index()
     {
-        return auth()->user();
+        //return auth()->user();
         $todos = TodoResource::collection(Todo::all());
         return response()->json(['todos' => $todos]);
     }

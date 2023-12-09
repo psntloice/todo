@@ -12,15 +12,25 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 class User extends Authenticatable
+//class User extends Models
 {
     use HasApiTokens, HasFactory, Notifiable;
 // ...ADDED
-
+/*
 public function todos(): HasMany
 {
     return $this->hasMany(Todo::class);
 }
-    /**
+   */
+// Specify the primary key column explicitly
+protected $primaryKey = 'id';
+
+public function todos()
+{
+    // Specify the foreign key column explicitly
+    return $this->hasMany(Todo::class, 'user_id');
+}
+/**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
