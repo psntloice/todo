@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 
 class AuthController extends Controller
@@ -39,27 +40,78 @@ class AuthController extends Controller
 
         /* */
 
-        $request->validate([
+        // Validate the incoming request data
+        $validator = Validator::make($request->all(), [
             'login_type' => 'required|in:email,phone',
             'identifier' => [
                 'required',
-                Rule::when(request('login_type') === 'email', 'email'),
-                Rule::when(request('login_type') === 'phone', ['regex:/^\+[0-9]{1,15}$/', 'unique:users,phone']),
+                Rule::when($request->input('login_type') === 'email', 'email'),
+                Rule::when($request->input('login_type') === 'phone', ['regex:/^\+[0-9]{1,15}$/']),
             ],
             'password' => 'required|string',
         ]);
+
+        if (Auth::attempt(['email' => $request->input('identifier'), 'password' => $request->input('password')]) ||
+        Auth::attempt(['phone' => $request->input('identifier'), 'password' => $request->input('password')])) {
+        // Authentication successful
+        $token = Auth::user()->createToken('auth_token')->plainTextToken;
+
+            return response()->json(['token' => $token]);
+        return redirect()->intended('/dashboard'); // Redirect to the intended page after login
+    } else {
+        // Authentication failed
+        throw new ValidationException($validator);
+        return redirect()->back()->withInput($request->only('identifier'))->withErrors(['identifier' => 'Invalid login credentials']);
+    }
+
+        // Check if validation fails
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
+        else{
+            $token = Auth::user()->createToken('auth_token')->plainTextToken;
+
+            return response()->json(['token' => $token]);
+        }
+//trial data
+/*{
+  "login_type": "phone",
+  //"login_type": "email",
+ // "identifier": "mary@gmail.com",
+  "identifier": "+254709581700",
+  "password": "mukabwaloice"
+}*/
+        // If the validation passes, continue with your logic
+        // ...
+
+        // Return a success response
+        return response()->json(['message' => 'Validation successful']);
+    
 /*
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 */
-        if (Auth::attempt($request->only('email', 'password'))) {
+      /*  if (Auth::attempt($request->only('email', 'password'))) {
             $token = Auth::user()->createToken('auth_token')->plainTextToken;
 
             return response()->json(['token' => $token]);
         }
 
+        if (Auth::attempt($request->only('phone', 'password'))) {
+            $token = Auth::user()->createToken('auth_token')->plainTextToken;
+
+            return response()->json(['token' => $token]);
+        }
+
+        // Create a validator instance
+$validator = Validator::make($request, $rules);
+
+// Check if validation fails
+if ($validator->fails()) {
+    throw new ValidationException($validator);
+}
         /*throw ValidationException::withMessages([
             'email' => ['The provided credentials are incorrect.'],
         ]);*/
@@ -67,7 +119,7 @@ class AuthController extends Controller
     }
 
     //added theese
-    
+   
 
     // ... other methods ...
 
