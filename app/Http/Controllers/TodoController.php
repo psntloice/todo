@@ -32,9 +32,10 @@ class TodoController extends Controller
 
     // Method to create a new todo    
     public function store(Request $request)
+    //public function store(StoreTodoRequest $request)
     {
         //return $request;
-        $validator = Validator::make($request->all(), [
+      /*  $validator = Validator::make($request->all(), [
             'title' => 'required',
             //'description' => 'nullable', //TO CHANGE HERE
             'completed' => 'required|boolean',
@@ -46,6 +47,30 @@ class TodoController extends Controller
 
         $todo = Todo::create($request->all());
         return response()->json(['todo' => $todo], 201);
+        */
+        
+        //added
+        // Validate the request data
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+    ]);
+//with request all
+// Create a new Todo instance and set attributes from the request
+$todo = new Todo($request->all());
+
+// Set the user_id based on the currently authenticated user
+$todo->user_id = auth()->user()->id;
+
+// Save the Todo to the database
+$todo->save();
+
+// Optionally, you can also associate the todo with the user using the relationship method
+// auth()->user()->todos()->save($todo);
+
+// Return a response, redirect, or whatever is appropriate for your application
+
+
     }
 
     // Method to update a todo by ID    
