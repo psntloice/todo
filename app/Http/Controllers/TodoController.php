@@ -93,7 +93,7 @@ return response()->json(['todo' => $todo], 201);
     }
 
     // Method to delete a todo by ID   
-    public function destroy($id)
+    public function destroy(Request $request)
     {
        // Validate the request
     $request->validate([
