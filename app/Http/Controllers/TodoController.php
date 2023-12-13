@@ -64,12 +64,7 @@ $todo->user_id = auth()->user()->id;
 
 // Save the Todo to the database
 $todo->save();
-
-// Optionally, you can also associate the todo with the user using the relationship method
-// auth()->user()->todos()->save($todo);
-
-// Return a response, redirect, or whatever is appropriate for your application
-
+return response()->json(['todo' => $todo], 201);
 
     }
 
@@ -98,15 +93,28 @@ $todo->save();
     }
 
     // Method to delete a todo by ID   
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //$todo = Todo::find($id);
-        $todo = Todo::where('id', $id)->first();
-        if (!$todo) {
-            return response()->json(['message' => 'Todo not found'], 404);
-        }
+       // Validate the request
+    $request->validate([
+        'idsToDelete' => 'required|array',
+    ]);
 
-        $todo->delete();
-        return response()->json(['message' => 'Todo deleted']);
+    // Retrieve the array of IDs from the request
+    $idsToDelete = $request->input('idsToDelete');
+
+    // Check if it's a single ID or an array of IDs
+    if (count($idsToDelete) === 1) {
+        // Delete a single record
+        $singleIdToDelete = $idsToDelete[0];
+        $todo = Todo::where('id', $singleIdToDelete)->delete();
+    } else {
+        // Delete multiple records
+        $todo = Todo::whereIn('id', $idsToDelete)->delete();
+    }
+        if (!$todo) {
+            return response()->json(['message' => 'not found'], 404);
+        }
+        return response()->json(['message' => 'deleted']);
     }
 }

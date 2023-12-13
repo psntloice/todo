@@ -38,6 +38,7 @@ public function todos()
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
     ];
 
