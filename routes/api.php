@@ -13,7 +13,8 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/todos/{todo}', [TodoController::class, 'show']);
     Route::get('/todos/{todo}/edit', [TodoController::class, 'edit']);
     Route::put('/todos/{todo}', [TodoController::class, 'update']);
-    Route::delete('/todos/{todo}', [TodoController::class, 'destroy']);
+   // Route::delete('/todos/{todo}', [TodoController::class, 'destroy']);
+    Route::post('/delete', [TodoController::class, 'destroy']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
