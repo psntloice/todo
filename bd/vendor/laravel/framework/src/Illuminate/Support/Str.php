@@ -750,6 +750,10 @@ class Str
      */
     public static function padBoth($value, $length, $pad = ' ')
     {
+        if (function_exists('mb_str_pad')) {
+            return mb_str_pad($value, $length, $pad, STR_PAD_BOTH);
+        }
+
         $short = max(0, $length - mb_strlen($value));
         $shortLeft = floor($short / 2);
         $shortRight = ceil($short / 2);
@@ -769,6 +773,10 @@ class Str
      */
     public static function padLeft($value, $length, $pad = ' ')
     {
+        if (function_exists('mb_str_pad')) {
+            return mb_str_pad($value, $length, $pad, STR_PAD_LEFT);
+        }
+
         $short = max(0, $length - mb_strlen($value));
 
         return mb_substr(str_repeat($pad, $short), 0, $short).$value;
@@ -784,6 +792,10 @@ class Str
      */
     public static function padRight($value, $length, $pad = ' ')
     {
+        if (function_exists('mb_str_pad')) {
+            return mb_str_pad($value, $length, $pad, STR_PAD_RIGHT);
+        }
+
         $short = max(0, $length - mb_strlen($value));
 
         return $value.mb_substr(str_repeat($pad, $short), 0, $short);
@@ -798,6 +810,17 @@ class Str
      */
     public static function parseCallback($callback, $default = null)
     {
+        if (static::contains($callback, "@anonymous\0")) {
+            if (static::substrCount($callback, '@') > 1) {
+                return [
+                    static::beforeLast($callback, '@'),
+                    static::afterLast($callback, '@'),
+                ];
+            }
+
+            return [$callback, $default];
+        }
+
         return static::contains($callback, '@') ? explode('@', $callback, 2) : [$callback, $default];
     }
 
