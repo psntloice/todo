@@ -1,15 +1,15 @@
 <template>
     <div>
-      <MyTodoFetcher />
+      <TodoLanding />
     </div>
   </template>
   
   <script>
-  import MyTodoFetcher from './MyTodoFetcher.vue';
+  import TodoLanding from './TodoLanding.vue';
   
   export default {
     components: {
-      MyTodoFetcher,
+      TodoLanding,
     },
   };
   </script>
