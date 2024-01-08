@@ -1,15 +1,15 @@
 <template>
     <div>
-      <TodoLanding />
+      <Home />
     </div>
   </template>
   
   <script>
-  import TodoLanding from './TodoLanding.vue';
+  import Home from './Home.vue';
   
   export default {
     components: {
-      TodoLanding,
+      Home,
     },
   };
   </script>
