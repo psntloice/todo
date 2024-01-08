@@ -1,15 +1,16 @@
 <template>
     <div>
-      <Home />
+      <router-view></router-view>
     </div>
   </template>
   
   <script>
-  import Home from './Home.vue';
-  
+    import HomePage from './HomePage.vue';
+  // No router import or initialization needed
   export default {
     components: {
-      Home,
+      HomePage,
     },
-  };
+      };
   </script>
+  
