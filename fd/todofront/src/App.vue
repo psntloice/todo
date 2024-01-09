@@ -5,11 +5,11 @@
   </template>
   
   <script>
-    import HomePage from './HomePage.vue';
+    import TlandingPage from './TlandingPage.vue';
   // No router import or initialization needed
   export default {
     components: {
-      HomePage,
+      TlandingPage, 
     },
       };
   </script>
