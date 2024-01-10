@@ -1,7 +1,7 @@
 <template>
     <div id="landing-page">
       <section class="hero">
-        <img src="../images/coffee2.jpeg" alt="Coffee beans background" class="background">
+        <img src="../images/coffee1.jpeg" alt="Coffee beans background" class="background">
         <div class="content">
           <h1 class="title">Brewtiful Moments, One Sip at a Time</h1>
           <p class="slogan">Welcome to The Coffee Bean, your caffeine haven & cozy corner.</p>
@@ -26,6 +26,7 @@
             <img :src="item.image" :alt="item.title">
             <h3>{{ item.title }}</h3>
             <p>{{ item.description }}</p>
+            
           </div>
         </div>
       </section>
@@ -48,17 +49,17 @@
       menuItems: [
         {
           title: "Espresso Delights",
-          image: "@/assets/latte-art-cappuccino.jpg",
+          image: './images/lattecapucino.jpeg',
           description: "Espresso, macchiatos, cappuccinos, lattes – we've got all your Italian classics, crafted with precision & love. Feel the caffeine kick!",
         },
         {
           title: "Slow Brew Sensations",
-          image: "@/assets/pour-over-coffee-brewing.jpg",
+          image: "/images/pourovercoffeebrewing.jpg",
           description: "Savor the subtle flavors of our pour-over coffees, meticulously brewed to perfection for a truly artisanal experience. Let the slow-roasted goodness awaken your senses.",
         },
         {
           title: "Cold Brews & Refreshments",
-          image: "@/assets/iced-coffee-with-straw.jpg",
+          image: ".../images/icedcoffeewithstraw.jpg",
           description: "Beat the heat with our refreshing iced coffees, smoothies, and teas, perfect for any summer day. Stay cool & caffeinated!",
         },
       ],
@@ -96,7 +97,7 @@ section {
 .hero .background {
   width: 100%;
   height: 400px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .hero .content {
@@ -164,7 +165,7 @@ section {
 .menu-items .item img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
   margin-bottom: 15px;
 }
 /* Contact and location section (continued) */
