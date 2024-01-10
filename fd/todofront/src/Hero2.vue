@@ -1,6 +1,6 @@
 <template>
     <div class="hero-section">
-      <img src="./images/adventurecafe.jpeg" alt="Your Landing Page Hero" class="hero-image">
+      <img src="../images/adventurecafe.jpeg" alt="Your Landing Page Hero" class="hero-image">
       <div class="hero-content">
         <h1>Your Catchy Headline</h1>
         <p>A concise and enticing subheading describing your offer.</p>
