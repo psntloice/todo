@@ -1,16 +1,14 @@
 <template>
-    <div>
-      <router-view></router-view>
-    </div>
-  </template>
-  
-  <script>
-    import TlandingPage from './TlandingPage.vue';
-  // No router import or initialization needed
-  export default {
-    components: {
-      TlandingPage, 
-    },
-      };
-  </script>
-  
+  <div id="app">
+    <header>
+      <nav>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link> |
+        <router-link to="/contact">Contact</router-link>
+      </nav>
+    </header>
+    <main>
+      <router-view></router-view> </main>
+  </div>
+</template>
+

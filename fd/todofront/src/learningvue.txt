@@ -19,6 +19,163 @@ HTML
 
 
 
+
+
+
+
+
+
+About router
+// routes.js
+import VueRouter from
+ 
+'vue-router';
+import HomeView from
+ 
+'../views/HomeView.vue';
+import AboutView from
+ 
+'../views/AboutView.vue';
+import ContactView from
+ 
+'../views/ContactView.vue';
+
+const routes = [
+  { path: '/', component: HomeView },
+  { path: '/about', component: AboutView },
+  { path: '/contact', component: ContactView }
+];
+
+const router = new VueRouter({
+  routes
+});
+
+export default router;
+
+// main.js
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router'; // Import the router instance
+
+Vue.config.productionTip = false;
+
+new Vue({
+  router, // Provide the router to the Vue instance
+  render: h => h(App)
+}).$mount('#app');
+
+ Use router-link and router-view in App.vue:
+
+Code snippet
+<template>
+  <div id="app">
+    <header>
+      <nav>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link> |
+        <router-link to="/contact">Contact</router-link>
+      </nav>
+    </header>
+    <main>
+      <router-view></router-view> </main>
+  </div>
+</template>
+
+Create route components:
+
+Create HomeView.vue, AboutView.vue, and ContactView.vue components for each route.
+
+Explanation:
+
+Installation: Install Vue Router using npm or yarn.
+Routes Configuration: Define routes with paths and corresponding components in routes.js.
+Router Instance: Create a router instance with the routes configuration.
+Integration: Import and provide the router to the Vue instance in main.js.
+Navigation Links: Use router-link components for navigation within templates.
+Route Rendering: Use router-view to render the component matching the current URL path.
+Route Components: Create the components that will be rendered for each route.
+With this setup, clicking a router-link will navigate to the corresponding route without full page reloads, and the correct component will be displayed within router-view.
+
+
+
+<router-view> is a special component provided by Vue Router that serves as a placeholder for dynamically rendering content based on the current route. It plays a crucial role in building single-page applications (SPAs) with Vue.js.
+
+Here's how it works:
+
+Placement: You typically place <router-view> within your main layout template (e.g., App.vue), where you want the route-specific content to be displayed.
+
+Route Change: When the user navigates to a different route using router-link components or programmatic navigation, the Vue Router matches the current URL path with the defined routes.
+
+Component Rendering: The router then determines the corresponding component for that route and renders it within the <router-view> placeholder.
+
+Key Features:
+
+Dynamic Content: It's the heart of dynamic content rendering in Vue Router, ensuring seamless transitions between views without full page reloads.
+Single Outlet: By default, Vue Router provides a single outlet for rendering routes.
+Named Views (Optional): You can use named views to render multiple components for a single route in different areas of your layout.
+Example:
+
+Code snippet
+<template>
+  <div id="app">
+    <header>
+      </header>
+    <main>
+      <router-view></router-view> </main>
+  </div>
+</template>\
+
+
+Ah, router-link! It's another key component of Vue Router, working hand-in-hand with <router-view> to enable user navigation within your SPA. Here's what it does:
+
+Function:
+
+router-link acts as a custom link that triggers navigation between different routes.
+Unlike regular HTML <a> links, it leverages Vue Router's internal mechanisms to avoid full page reloads and update the UI seamlessly.
+Benefits:
+
+Smooth Navigation: Clicking a router-link triggers route changes through JavaScript, resulting in a smoother and more responsive user experience.
+Active Class: It automatically applies an "active" class to the element when the linked route matches the current URL, providing visual cues for users.
+Customization: You can customize the link appearance and behavior using props and events.
+Example:
+
+HTML
+<template>
+  <ul>
+
+    
+<li><router-link
+ 
+to="/">Home</router-link></li>
+
+    
+<li><router-link
+ 
+to="/about">About</router-link></li>
+
+    
+<li><router-link
+ 
+to="/contact">Contact</router-link></li>
+
+  
+</ul>
+</template>
+Use code with caution. Learn more
+Key points:
+
+Use to prop to specify the target route path.
+You can also use a named route instead of a path.
+Events like click can be handled for additional customization.
+In summary:
+
+router-link is the link-building companion to <router-view> in Vue Router.
+It enables user-driven navigation between different route components.
+It provides a smooth and dynamic way to navigate your SPA without leaving the page.
+
+
+
+
  Compile assets (optional):
 If you want to compile your Vue components for production, you can use Laravel Mix:
 Install Laravel Mix: npm install laravel-mix
