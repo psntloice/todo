@@ -1,6 +1,6 @@
 <template>
   <div class="hero-section">
-    <img src="../images/adventurecafe.jpeg" alt="Your Landing Page Hero" class="hero-image">
+    <img src="../images/coffee1.jpeg" alt="Your Landing Page Hero" class="hero-image">
     <div class="hero-content">
       <h1>Your Catchy Headline</h1>
       <p>A concise and enticing subheading describing your offer.</p>
@@ -23,13 +23,14 @@ height: 100vh; /* Occupy full viewport height */
 display: flex;
 align-items: center;
 justify-content: space-between;
-background-color: #f5f5f5; /* Adjust to your color scheme */
+background-color: #113946; /* Adjust to your color scheme */
 }
 
 .hero-image {
-width: 50%;
+width: 45%;
 height: 100%; /* Match the section height */
-object-fit: cover; /* Scale image proportionally */
+object-fit: contain; /* Scale image proportionally */
+
 }
 /* .hero-section {
   background-color: #f5f5f5; /* Adjust to your color scheme */
@@ -45,6 +46,7 @@ object-fit: cover; /* Scale image proportionally */
 } */ 
 
 .hero-content {
+  background-color: #f5f5f5; /* Adjust to your color scheme */
   width: 50%;
   padding: 30px;
   text-align: center;

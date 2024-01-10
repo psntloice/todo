@@ -1,8 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" class="router-links-container">
     <header>
       <nav>
-        <router-link to="/">Home</router-link> |
+        <router-link to="/">Start</router-link> |
+        <router-link to="/l2">About</router-link> |
         <router-link to="/about">About</router-link> |
         <router-link to="/contact">Contact</router-link>
       </nav>
@@ -12,3 +13,9 @@
   </div>
 </template>
 
+<style>
+.router-links-container {
+  display: grid;
+  place-items: center; /* Center content both horizontally and vertically */
+}
+</style>
