@@ -6,32 +6,35 @@ import LandingPageView from './views/LandingPageView.vue';
   <main >
       <router-view>
         <!-- <LandingPageView v-if="authenticated" @login-success="handleLoginSuccess" /> -->
-        <LandingPageView v-if=true />
-
-        <TodoHomeView/>
+        <LandingPageView v-if=true />        
       </router-view> 
       </main>
 </template>
 
-<script>
 
+
+
+
+<script>
 export default {
-    data() {
-        return {
-            authenticated: false,
-            username: "",
-        };
-    },
-    methods: {
-        handleLoginSuccess() {
-            //handleLoginSuccess(username) {
-            this.authenticated = true;
-            this.username = username;
-        },
-        handleLogin() {
-            // Set isLoggedIn to true, triggering welcome component
-            this.isLoggedIn = true;
-        },
-    },
+  data() {
+      return {
+          authenticated: false,
+          username: "",
+      };
+  },
+  name: 'App',
+  methods: {
+      handleLoginSuccess() {
+          //handleLoginSuccess(username) {
+          this.authenticated = true;
+          this.username = username;
+      },
+      handleLogin() {
+          // Set isLoggedIn to true, triggering welcome component
+          this.isLoggedIn = true;
+      },
+  }
+  
 };
 </script>

@@ -45,13 +45,16 @@ const router = createRouter({
 
 
 // Navigation guard to check authentication before entering a route
+
 router.beforeEach((to, from, next) => {
   const isAuthenticated = true;/* Implement your authentication check here */ false;
 
   if (to.matched.some((route) => route.meta.requiresAuth) && !isAuthenticated) {
     // Redirect to landing page if authentication is required but user is not authenticated
+    
     next('/');
   } else {
+    console.log(`Navigating from ${from.path} to ${to.path}`);
     next();
   }
 });
