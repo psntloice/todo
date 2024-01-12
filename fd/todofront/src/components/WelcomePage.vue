@@ -1,15 +1,39 @@
-<template>
+<template>   
     <div id="welcome-page">
       <section class="hero">
         <img src="../images/TODO.jpeg" alt="Coffee beans background" class="background">
         <div class="content">
+          <LogIn/>
           <h1 class="title">TodoWise: Smart Task Management for Modern Life</h1>
           <p class="slogan">Task Management, Redefined for You.</p>
           <a href="#menu" class="cta">Explore Our Coffee Delights</a>
+          <div id="landing-page">
+    <a href="/login">Login</a>
+  </div>
         </div>
       </section>    
     </div>
   </template>
+
+<script>
+import LogIn from './LogIn.vue';
+
+export default {
+  data() {
+    return {
+      authenticated: false,
+      username: '',
+    };
+  },
+  methods: {
+    handleLoginSuccess(username) {
+      this.authenticated = true;
+      this.username = username;
+    },
+  },
+};
+</script>
+
   
   <style scoped>
 /* Add your styles here */
