@@ -13,6 +13,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'todoh',
+};
+</script>
+
 <style>
 body
 {
