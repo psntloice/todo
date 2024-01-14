@@ -2,7 +2,7 @@
     <div id="landing-page">
       <section class="hero">
         <img
-            src="./images/TODO.jpeg"
+            src="../images/TODO.jpeg"
             alt="Coffee beans background"
             class="background"
           />
@@ -13,7 +13,7 @@
           <p class="slogan">Task Management, Redefined for You.</p>
           <a href="#menu" class="cta">Explore Our Coffee Delights</a>
           <ul>
-          <li><router-link to="/todoh">Home</router-link></li>
+          <li><router-link to="/login">Home</router-link></li>
           <!-- Add more navigation links as needed -->
         </ul> 
         <routerView/> 

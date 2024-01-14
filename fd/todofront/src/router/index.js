@@ -5,7 +5,7 @@ import AboutView from '../views/AboutView.vue'
 import Btstrapped from '../views/Btstrapped.vue'
 import LogIn from '../components/LogIn.vue';
 import LandingPageView from '../views/LandingPageView.vue';
-
+import store from '../store';
 
 
 const router = createRouter({
@@ -46,15 +46,32 @@ const router = createRouter({
 
 // Navigation guard to check authentication before entering a route
 
-router.beforeEach((to, from, next) => {
-  const isAuthenticated = true;/* Implement your authentication check here */ false;
+// router.beforeEach((to, from, next) => {
+//   const isAuthenticated = false;/* Implement your authentication check here */ false;
 
-  if (to.matched.some((route) => route.meta.requiresAuth) && !isAuthenticated) {
-    // Redirect to landing page if authentication is required but user is not authenticated
+//   if (to.matched.some((route) => route.meta.requiresAuth) && !isAuthenticated) {
+//     // Redirect to landing page if authentication is required but user is not authenticated
     
+//     next('/');
+//   } else if (!to.matched.some((route) => route.meta.requiresAuth) && isAuthenticated) {
+//     // Redirect to home page if the route does not require authentication and user is authenticated
+//     next('/todoh');
+//   } else {
+//     next();
+//   }
+// });
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some((route) => route.meta.requiresAuth);
+  const isAuthenticated = store.state.auth.isAuthenticated;
+
+  if (requiresAuth && !isAuthenticated) {
+    // Redirect to landing page if authentication is required but user is not authenticated
     next('/');
+  } else if (!requiresAuth && isAuthenticated) {
+    // Redirect to home page if the route does not require authentication and user is authenticated
+    next('/todoh');
   } else {
-    console.log(`Navigating from ${from.path} to ${to.path}`);
     next();
   }
 });

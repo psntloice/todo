@@ -4,10 +4,17 @@ import LandingPageView from './views/LandingPageView.vue';
 </script>
 <template>
   <main >
-      <router-view>
+  <div id="app">
+
+<!-- added code  -->
+<h1 v-if="isAuthenticated">Welcome to the Home Page!</h1>
+    <h1 v-else>Welcome to the Landing Page!</h1>
+
+      <router-view/>
         <!-- <LandingPageView v-if="authenticated" @login-success="handleLoginSuccess" /> -->
-        <LandingPageView v-if=true />        
-      </router-view> 
+        <!-- <LandingPageView/> -->
+        <!-- <TodoHomeView/> -->
+    </div>
       </main>
 </template>
 
@@ -24,6 +31,15 @@ export default {
       };
   },
   name: 'App',
+
+//   added
+  computed: {
+    isAuthenticated() {
+      return this.$store.state.auth.isAuthenticated;
+    },
+  },
+
+
   methods: {
       handleLoginSuccess() {
           //handleLoginSuccess(username) {
@@ -34,7 +50,8 @@ export default {
           // Set isLoggedIn to true, triggering welcome component
           this.isLoggedIn = true;
       },
-  }
+
+    }
   
 };
 </script>
