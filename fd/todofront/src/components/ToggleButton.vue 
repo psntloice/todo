@@ -1,0 +1,14 @@
+<!-- ToggleButton.vue -->
+<template>
+  <button @click="toggle">Toggle</button>
+</template>
+
+<script>
+export default {
+  methods: {
+    toggle() {
+      this.$store.commit('toggle');
+    },
+  },
+};
+</script>

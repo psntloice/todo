@@ -4,13 +4,10 @@ import MainHomeView from "./MainHomeView.vue";
 
 <template>
   <div id="app" >
-    <header id="mainheader" class="router-links-container">
-      <nav >
-        <router-link to="/">Start</router-link> |
-        <router-link to="/l2">Home</router-link> |
-        <router-link to="/about">About</router-link> |
-        <router-link to="/contact">Contact</router-link>
-      </nav>
+    <header>
+      <button @click="toggleSidebar" class="toggle-btn">&#9776; Toggle Sidebar</button>
+      <button class="toggle-btn">&#9776; Home</button>
+        <span class="title">Todo App</span>
     </header>
     <main >
       <MainHomeView/> </main>
@@ -33,19 +30,33 @@ body
   display: absolute;
   top: 0;
 }
-#mainheader{
-  max-height: fit-content;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: white;
   margin-top: 0px;
 }
-.router-links-container {
-  display: grid;
-  place-items: center; /* Center content both horizontally and vertically */
+header {
+    background-color: #a0886f; /* Coffee theme color */
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   
-}
-
+  .toggle-btn {
+    padding: 0.5rem;
+    background-color: #5d4e3f; /* Darker shade for button */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .title {
+    flex-grow: 1;
+    text-align: center;
+    color: white;
+  }
+  
 </style>

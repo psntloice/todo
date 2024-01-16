@@ -2,12 +2,16 @@
 const state = {
   isAuthenticated: false,
   user: null,
+  isToggleOn: false,
 };
 
 const mutations = {
   SET_AUTH(state, user) {
     state.isAuthenticated = true;
     state.user = user;
+  },
+  toggle(state) {
+    state.isToggleOn = !state.isToggleOn;
   },
 };
 
