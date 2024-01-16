@@ -1,10 +1,13 @@
 <script setup>
 import MainHomeView from "./MainHomeView.vue";
+import ToggleButton from './components/ToggleButton.vue';
 </script>
 
 <template>
   <div id="app" >
     <header>
+      <button @click="toggle">Toggle</button>
+      <ToggleButton />
       <button @click="toggleSidebar" class="toggle-btn">&#9776; Toggle Sidebar</button>
       <button class="toggle-btn">&#9776; Home</button>
         <span class="title">Todo App</span>
@@ -17,6 +20,14 @@ import MainHomeView from "./MainHomeView.vue";
 <script>
 export default {
   name: 'todoh',
+  methods: {
+    toggle() {
+      this.$store.commit('toggle');
+    },
+  },
+  components: {
+    ToggleButton,
+  },
 };
 </script>
 

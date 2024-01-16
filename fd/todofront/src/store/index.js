@@ -15,10 +15,24 @@ import auth from './auth';
 // import todos from './todos';
 
 export default createStore({
+  // modules: {
+  //   auth,
+  //   // todos,
+  //   // ...other modules
+  // },
   modules: {
     auth,
-    // todos,
-    // ...other modules
+    sidebar: {
+      namespaced: true,
+      state: {
+        isOpen: false,
+      },
+      mutations: {
+        toggle(state) {
+          state.isOpen = !state.isOpen;
+        },
+      },
+    },
   },
 });
 

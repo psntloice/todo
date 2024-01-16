@@ -2,16 +2,16 @@
   <div id="apphome">
     <div class="container">
 
-      <div v-if="isToggleOn">
-        <!-- Call your function here when the toggle is on -->
-        <div :class="{ 'sidebar-hidden': sidebarHidden }" class="sidebar">
+      <!-- <div v-if="isToggleOn">
+        Call your function here when the toggle is on -->
+        <!-- <div :class="{ 'sidebar-hidden': sidebarHidden }" class="sidebar">
         <side-bar @changePane="changePane" />
       </div>
-      </div>
-
-      <!-- <div :class="{ 'sidebar-hidden': sidebarHidden }" class="sidebar">
-        <side-bar @changePane="changePane" />
       </div> -->
+
+      <div :class="{ 'sidebar-hidden': sidebarHidden }" class="sidebar">
+        <side-bar @changePane="changePane" />
+      </div>
       <div class="main-content">
         <add-todo @addTodo="addTodo" />
         <todo-list
