@@ -6,7 +6,7 @@ import router from './router'; // Import the router instance
 import store from './store'; // Import your Vuex store
 
 // createApp(App).use(store).mount('#app');
-
+//
 //Vue.config.productionTip = false;
 
 // const app = createApp(App)

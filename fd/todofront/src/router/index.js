@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import TodoHomeView from '../views/TodoHomeView.vue'
-//import HomeView from '../views/HomeView.vue'
+//import HomeView from '../views/HomeView.vue'//
 import AboutView from '../views/AboutView.vue'
 import Btstrapped from '../views/Btstrapped.vue'
 import LogIn from '../components/LogIn.vue';
@@ -8,8 +8,21 @@ import LandingPageView from '../views/LandingPageView.vue';
 import store from '../store';
 
 
+// const routes = [
+//   {
+//     path: '/',
+//     name: 'LoginPage',
+//     component: LoginPage,
+//   },
+// ];
+
+
+
+
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
+
   routes: [
     {
       path: '/',
@@ -61,19 +74,19 @@ const router = createRouter({
 //   }
 // });
 
-router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some((route) => route.meta.requiresAuth);
-  const isAuthenticated = store.state.auth.isAuthenticated;
+// router.beforeEach((to, from, next) => {
+//   const requiresAuth = to.matched.some((route) => route.meta.requiresAuth);
+//   const isAuthenticated = store.state.auth.isAuthenticated;
 
-  if (requiresAuth && !isAuthenticated) {
-    // Redirect to landing page if authentication is required but user is not authenticated
-    next('/');
-  } else if (!requiresAuth && isAuthenticated) {
-    // Redirect to home page if the route does not require authentication and user is authenticated
-    next('/todoh');
-  } else {
-    next();
-  }
-});
+//   if (requiresAuth && !isAuthenticated) {
+//     // Redirect to landing page if authentication is required but user is not authenticated
+//     next('/');
+//   } else if (!requiresAuth && isAuthenticated) {
+//     // Redirect to home page if the route does not require authentication and user is authenticated
+//     next('/todoh');
+//   } else {
+//     next();
+//   }
+// });
 
 export default router

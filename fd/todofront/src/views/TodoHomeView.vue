@@ -1,3 +1,7 @@
+<script setup>
+import MainHomeView from "./MainHomeView.vue";
+</script>
+
 <template>
   <div id="app" >
     <header id="mainheader" class="router-links-container">
@@ -9,7 +13,7 @@
       </nav>
     </header>
     <main >
-      <router-view></router-view> </main>
+      <MainHomeView/> </main>
   </div>
 </template>
 
@@ -41,6 +45,7 @@ body
 .router-links-container {
   display: grid;
   place-items: center; /* Center content both horizontally and vertically */
+  
 }
 
 </style>

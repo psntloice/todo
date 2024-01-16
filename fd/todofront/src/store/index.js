@@ -4,18 +4,32 @@
 // import auth from './auth';
 
 // Vue.use(Vuex);
-
+//sto
 // export default new Vuex.Store({
 //   modules: {
 //     auth,
 //   },
 // });
-
 import { createStore } from 'vuex';
-import authModule from './auth.js';
+import auth from './auth';
+// import todos from './todos';
 
 export default createStore({
   modules: {
-    auth: authModule,
+    auth,
+    // todos,
+    // ...other modules
   },
 });
+
+
+
+
+// import { createStore } from 'vuex';
+// import authModule from './modules/auth.js';
+
+// export default createStore({
+//   modules: {
+//     auth: authModule,
+//   },
+// });
