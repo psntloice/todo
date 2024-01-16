@@ -1,57 +1,126 @@
-<script setup>
-import TodoHomeView from './views/TodoHomeView.vue';
-import LandingPageView from './views/LandingPageView.vue';
-</script>
 <template>
-  <main >
   <div id="app">
-
-<!-- added code  -->
-<h1 v-if="isAuthenticated">Welcome to the Home Page!</h1>
-    <h1 v-else>Welcome to the Landing Page!</h1>
-
-      <router-view/>
-        <!-- <LandingPageView v-if="authenticated" @login-success="handleLoginSuccess" /> -->
-        <!-- <LandingPageView/> -->
-        <!-- <TodoHomeView/> -->
+    <header>
+      <button @click="toggleSidebar" class="toggle-btn">&#9776; Toggle Sidebar</button>
+      <span class="title">Todo App</span>
+    </header>
+    <div class="container">
+      <div :class="{ 'sidebar-hidden': sidebarHidden }" class="sidebar">
+        <side-bar @changePane="changePane" />
+      </div>
+      <div class="main-content">
+        <add-todo @addTodo="addTodo" />
+        <todo-list v-if="activePane === 'all'" :filteredTodos="todos" @deleteTodo="deleteTodo" />
+        <todo-list v-if="activePane === 'active'" :filteredTodos="activeTodos" @deleteTodo="deleteTodo" />
+        <todo-list v-if="activePane === 'completed'" :filteredTodos="completedTodos" @deleteTodo="deleteTodo" />
+      </div>
     </div>
-      </main>
+  </div>
 </template>
 
-
-
-
-
 <script>
-export default {
-  data() {
-      return {
-          authenticated: false,
-          username: "",
-      };
-  },
-  name: 'App',
+import TodoList from './components/TodoList.vue';
+import AddTodo from './components/AddTodo.vue';
+import SideBar from './components/SideBar.vue';
 
-//   added
+export default {
+  name: 'App',
+  components: {
+    TodoList,
+    AddTodo,
+    SideBar,
+  },
+  data() {
+    return {
+      todos: [],
+      activePane: 'all',
+      sidebarHidden: false,
+    };
+  },
   computed: {
-    isAuthenticated() {
-      return this.$store.state.auth.isAuthenticated;
+    activeTodos() {
+      return this.todos.filter(todo => !todo.completed);
+    },
+    completedTodos() {
+      return this.todos.filter(todo => todo.completed);
     },
   },
-
-
   methods: {
-      handleLoginSuccess() {
-          //handleLoginSuccess(username) {
-          this.authenticated = true;
-          this.username = username;
-      },
-      handleLogin() {
-          // Set isLoggedIn to true, triggering welcome component
-          this.isLoggedIn = true;
-      },
-
-    }
-  
+    addTodo(todo) {
+      this.todos.push({
+        id: Date.now(),
+        text: todo.text,
+        dueDate: todo.dueDate,
+        completed: false,
+      });
+    },
+    deleteTodo(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id);
+    },
+    changePane(pane) {
+      this.activePane = pane;
+    },
+    toggleSidebar() {
+      this.sidebarHidden = !this.sidebarHidden;
+    },
+  },
 };
 </script>
+
+<style>
+#app {
+  font-family: 'Arial', sans-serif;
+}
+
+#app {
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  background-color: #a0886f; /* Coffee theme color */
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-btn {
+  padding: 0.5rem;
+  background-color: #5d4e3f; /* Darker shade for button */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.title {
+  flex-grow: 1;
+  text-align: center;
+  color: white;
+}
+
+
+
+
+.container {
+  display: flex;
+  height: calc(100vh - 2rem); /* Adjust for header height */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #eee;
+  padding: 1rem;
+  transition: margin-left 0.3s;
+}
+
+.sidebar-hidden {
+  margin-left: -250px;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+</style>
