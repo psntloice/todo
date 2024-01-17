@@ -1,8 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import TodoHomeView from '../views/TodoHomeView.vue'
-//import HomeView from '../views/HomeView.vue'//
-import AboutView from '../views/AboutView.vue'
-import Btstrapped from '../views/Btstrapped.vue'
 import LogIn from '../components/LogIn.vue';
 import LandingPageView from '../views/LandingPageView.vue';
 import store from '../store';
@@ -42,17 +39,6 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },     
     
-    {
-      path: '/about',
-      name: 'about',
-      component: AboutView
-    },     
-    
-    {
-      path: '/BTS',
-      name: 'BTS',
-      component: Btstrapped
-    }, 
   ]
 })
 
