@@ -1,25 +1,7 @@
-// src/store/index.js
-// import Vue from 'vue';
-// import Vuex from 'vuex';
-// import auth from './auth';
-
-// Vue.use(Vuex);
-//sto
-// export default new Vuex.Store({
-//   modules: {
-//     auth,
-//   },
-// });
-import { createStore } from 'vuex';
-import auth from './auth';
-// import todos from './todos';
+import { createStore } from "vuex";
+import auth from "./auth";
 
 export default createStore({
-  // modules: {
-  //   auth,
-  //   // todos,
-  //   // ...other modules
-  // },
   modules: {
     auth,
     sidebar: {
@@ -33,17 +15,18 @@ export default createStore({
         },
       },
     },
+    
+    // myauth: {
+    //   namespaced: true,
+    //   state: {
+    //     isAuthenticated: false,
+    //   },
+    //   mutations: {
+    //     SET_AUTH(state, user) {
+    //       state.isAuthenticated = true;
+    //       state.user = user;
+    //     },
+    //   },
+    // },
   },
 });
-
-
-
-
-// import { createStore } from 'vuex';
-// import authModule from './modules/auth.js';
-
-// export default createStore({
-//   modules: {
-//     auth: authModule,
-//   },
-// });

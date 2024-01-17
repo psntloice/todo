@@ -1,5 +1,6 @@
 <template>
     <div id="landing-page">
+      <h1 class="title">TodoWise: Smart Task Management for Modern Life</h1>
       <section class="hero">
         <img
             src="../images/TODO.jpeg"
@@ -8,15 +9,9 @@
           />
         </section>      
       
-          <section>
-            <h1 class="title">TodoWise: Smart Task Management for Modern Life</h1>
-          <p class="slogan">Task Management, Redefined for You.</p>
-          <a href="#menu" class="cta">Explore Our Coffee Delights</a>
-          <ul>
-          <li><router-link to="/login">Home</router-link></li>
-          <!-- Add more navigation links as needed -->
-        </ul> 
-        <routerView/> 
+          <section>            
+          <h2 class="slogan">Task Management, Redefined for You.</h2>
+           <router-link to="/login">Log In</router-link>          
         </section>
     </div>
   </template>
@@ -28,9 +23,7 @@
   </script>
 
   <style scoped>
-  /* Add your styles here */
-  /* General styling */
-  body {
+    body {
     font-family: "Open Sans", sans-serif;
     margin: 0;
     background-color: #f5f5f5;
@@ -43,7 +36,7 @@
   }
   
   section {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
   
   /* Hero section */
@@ -95,11 +88,7 @@
   
     .about-us .gallery img {
       width: 50%;
-    }
-  
-    .menu-items .item {
-      width: 100%;
-    }
+    }  
   }
   
   /* Additional refinements */
@@ -108,28 +97,11 @@
     margin-bottom: 20px;
   }
   
-  p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
   a {
     color: #4a2d0e; /* Dark brown color */
     text-decoration: none;
   }
   
-  .landing-container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .todo-container {
-    margin-top: 20px;
-  }
   </style>
   
   
