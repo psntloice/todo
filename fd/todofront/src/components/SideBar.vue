@@ -1,12 +1,8 @@
 <template>
   <div v-if="isOpen" class="sidebar">
-
-    <div class="sidebar">
       <button @click="changePane('all')" :class="{ active: activePane === 'all' }">All Tasks</button>
       <button @click="changePane('active')" :class="{ active: activePane === 'active' }">Active Tasks</button>
       <button @click="changePane('completed')" :class="{ active: activePane === 'completed' }">Completed Tasks</button>
-    </div>
-
     </div>
   </template>
   

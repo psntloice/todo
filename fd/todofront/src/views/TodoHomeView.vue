@@ -1,15 +1,15 @@
 <script setup>
 import MainHomeView from "./MainHomeView.vue";
-import ToggleButton from './components/ToggleButton.vue';
+import ToggleButton from '../components/ToggleButton.vue';
 </script>
 
 <template>
   <div id="app" >
     <header>
-      <button @click="toggle">Toggle</button>
       <ToggleButton />
-      <button @click="toggleSidebar" class="toggle-btn">&#9776; Toggle Sidebar</button>
-      <button class="toggle-btn">&#9776; Home</button>
+      <button @click="reload" class="home-button">
+    <i class="fas fa-home"></i> ⌂ Home 
+  </button>
         <span class="title">Todo App</span>
     </header>
     <main >
@@ -21,11 +21,13 @@ import ToggleButton from './components/ToggleButton.vue';
 export default {
   name: 'todoh',
   methods: {
-    toggle() {
-      this.$store.commit('toggle');
+    reload() {
+            // this.$router.push('/todoh');
+             // Reload the page
+      window.location.reload();
     },
   },
-  components: {
+   components: {
     ToggleButton,
   },
 };
@@ -54,20 +56,25 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  
-  .toggle-btn {
-    padding: 0.5rem;
-    background-color: #5d4e3f; /* Darker shade for button */
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
+  }  
   .title {
     flex-grow: 1;
     text-align: center;
     color: white;
   }
-  
+  .home-button {
+    background-color: #5d4e3f; /* Darker shade for button */
+    color: white;
+    padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 6px;
+}
+/* .home-button i {
+  margin-left: 8px;
+} */
+.home-button:hover {
+  background-color: #b0b4b8;
+}
 </style>
