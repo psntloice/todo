@@ -1,5 +1,4 @@
-import store from '../store/auth'; // Adjust the path based on your project structure
-
+import store from '../store/auth'; 
 const isAuthenticated = () => store.state.isAuthenticated;
 
 const checkAuthentication = (to, from, next) => {
@@ -13,5 +12,6 @@ const checkAuthentication = (to, from, next) => {
     next();
   }
 };
+
 
 export default checkAuthentication;

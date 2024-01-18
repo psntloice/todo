@@ -21,6 +21,7 @@
       />
       <br />
       <button type="submit" class="login-button">Login</button>
+      <p v-if="errorMessage" style="color: red;">{{ errorMessage }}</p>
     </form>
   </div>
 </template>
@@ -38,46 +39,43 @@ export default {
     const router = useRouter();
     const username = ref("");
     const password = ref("");
-
-    // // Retrieve the handleLogin method from the methods section
-    // const handleLogin = this.handleLogin;
-
-    // // Call handleLogin immediately when the component is being set up
-    // handleLogin();
+    const errorMessage= ref("");
 
     const handleLogin = () => {
-      // const handleLogin = async () => {
-      // Simulate a successful login
-      store.dispatch('login', { username: username.value, password: password.value });
+      // Reset error message on each login attempt
+      errorMessage.value = '';
+           // const handleLogin = async () => {
       // await store.dispatch('login', { username: username.value, password: password.value });
-
-      // After a successful login, redirect to the desired page
-      router.push('/todoh'); // Adjust the path as needed
+      // Simulate a successful login
+      store
+        .dispatch("login", {
+          username: username.value,
+          password: password.value,
+        })
+        .then(() => {
+          // Redirect to home page after successful login
+          router.push("/todoh"); // Adjust the path as needed
+        })
+        .catch((error) => {
+          // Handle login failure, e.g., show an error message
+          errorMessage.value  = error.message;
+          console.error('Login failed:', error.message);
+          username.value = "";
+          password.value = "";
+        });
     };
 
     // Call handleLogin immediately when the component is being set up
-    handleLogin();
+    //handleLogin();
 
     return {
       username,
       password,
       handleLogin,
-    };
+      errorMessage,
+      };
   },
   methods: {
-    // handleLogin() {
-    //   // const { $store, $router, username, password } = this;
-     
-    //   // Simulate a successful login
-    //   this.$store.dispatch("login", {
-    //     username: this.username,
-    //     password: this.password,
-    //   });
-    //   this.$store.commit("myauth/SET_AUTH", username);
-
-    //   // After a successful login, redirect to the desired page
-    //   this.$router.push("/todoh"); // Adjust the path as needed
-    //   console.log("hwkoe");
     // },
   },
 };

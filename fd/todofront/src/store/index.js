@@ -14,19 +14,6 @@ export default createStore({
           state.isOpen = !state.isOpen;
         },
       },
-    },
-    
-    // myauth: {
-    //   namespaced: true,
-    //   state: {
-    //     isAuthenticated: false,
-    //   },
-    //   mutations: {
-    //     SET_AUTH(state, user) {
-    //       state.isAuthenticated = true;
-    //       state.user = user;
-    //     },
-    //   },
-    // },
+    },    
   },
 });

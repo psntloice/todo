@@ -5,15 +5,9 @@ const state = {
 };
 
 const mutations = {
-  // SET_AUTH(state, payload) {
-  //   state.isAuthenticated = payload.isAuthenticated;
-  //   state.user = payload.user || null;
-  // },
-  // SET_AUTH(state, isAuthenticated) {
-  //   state.isAuthenticated = isAuthenticated;
-  // },
-  SET_AUTH(state, data) {
+    SET_AUTH(state, data) {
     state.isAuthenticated = data.isAuthenticated;
+    state.user = data.user || null;
     },
   // SET_AUTH(state, user) {
   //   state.isAuthenticated = true;
@@ -26,7 +20,16 @@ const mutations = {
 
 const actions = {
   login({ commit }, { username, password }) {
-    commit('SET_AUTH', { isAuthenticated: true});
+    // Simulate a successful login for demonstration purposes
+    if (username === 'demo' && password === 'password') {
+      const user = { username }; // Update this with the actual user data
+      commit('SET_AUTH', { isAuthenticated: true, user });
+      return Promise.resolve(true); // Resolve the promise for a successful login
+    } else {
+      return Promise.reject(new Error('Invalid username or password'));
+        }
+  },
+
 
     // // Simulate an asynchronous login
     // return new Promise((resolve) => {
@@ -37,7 +40,7 @@ const actions = {
     //     resolve();
     //   }, 1000);
     // });
-  },
+ // },
   
   // login({ commit }, credentials) {
   //   // Perform your login logic here
