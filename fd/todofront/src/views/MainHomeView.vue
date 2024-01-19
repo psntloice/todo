@@ -88,7 +88,7 @@ export default {
 }
 
 .sidebar {
-  width: 250px;
+  width: auto;
   background-color: #eee;
   padding: 1rem;
   transition: margin-left 0.3s;
