@@ -1,6 +1,6 @@
 <template>
     <div id="landing-page">
-      <h1 class="title">TodoWise: Smart Task Management for Modern Life</h1>
+      <h1 class="title">Smart Task Management for Modern Life</h1>
       <section class="hero">
         <img
             src="../images/TODO.jpeg"

@@ -4,17 +4,10 @@ import LandingPageView from './views/LandingPageView.vue';//
 </script>
 <template>
   <main >
-  <div id="app">
-
-<!-- added code  -->
-<!-- <h1 v-if="isAuthenticated">Welcome to the Home Page!</h1>
-    <h1 v-else>Welcome to the Landing Page!</h1> -->
-
-      <router-view/>
-        <!-- <LandingPageView v-if="authenticated" @login-success="handleLoginSuccess" /> -->
-        <!-- <LandingPageView/> -->
-        <!-- <TodoHomeView/> -->
-    </div>
+    <router-view/>
+  <!-- <div id="app">
+      <router-view/>       
+    </div> -->
       </main>
 </template>
 

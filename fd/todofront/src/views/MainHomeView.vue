@@ -1,5 +1,5 @@
 <template>
-  <div id="apphome">
+  <!-- <div id="apphome"> -->
     <div class="container">
       <div :class="{ 'sidebar-hidden': sidebarHidden }" class="sidebar">
         <side-bar @changePane="changePane" />
@@ -23,7 +23,7 @@
         />
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
